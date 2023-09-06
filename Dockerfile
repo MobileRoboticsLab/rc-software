@@ -8,6 +8,9 @@ RUN apt install -y \
     ros-noetic-ackermann-msgs \
     ros-noetic-serial
 
+RUN apt install -y \
+    ros-noetic-hector-mapping
+
 # Set work directory
 WORKDIR /catkin_ws/
 
