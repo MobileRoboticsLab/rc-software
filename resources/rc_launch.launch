@@ -1,0 +1,14 @@
+<launch>
+    <!-- VESC -->
+    <include file="$(find vesc_main)/launch/vesc.launch" />
+
+    <!-- Lidar -->
+    <include file="$(find ydlidar)/launch/lidar.launch" />
+
+    <!-- SLAM -->
+    <!-- Hector -->
+
+    <!-- Transforms -->
+    <!-- /base_link -> /laser -->
+
+</launch>

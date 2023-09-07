@@ -18,6 +18,9 @@ WORKDIR /catkin_ws/
 COPY ./vesc /catkin_ws/src/vesc
 COPY ./ydlidar /catkin_ws/src/ydlidar
 
+# Install launch file
+COPY ./resources/rc_launch.launch /catkin_ws/src/rc_launch.launch
+
 # Build ROS workspace
 RUN cd /catkin_ws/ \
     && . /opt/ros/noetic/setup.sh \
