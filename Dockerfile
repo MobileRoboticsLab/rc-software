@@ -1,4 +1,4 @@
-FROM ros:noetic
+FROM ros:noetic-robot
 
 RUN apt update
 RUN apt install net-tools -y
