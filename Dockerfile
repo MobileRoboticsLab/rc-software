@@ -19,6 +19,6 @@ COPY ./vesc /catkin_ws/src/vesc
 COPY ./ydlidar /catkin_ws/src/ydlidar
 
 # Build ROS workspace
-#RUN cd /catkin_ws/ \
-#    && . /opt/ros/noetic/setup.sh \
-#    && catkin_make
+RUN cd /catkin_ws/ \
+    && . /opt/ros/noetic/setup.sh \
+    && catkin_make
