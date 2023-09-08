@@ -11,6 +11,6 @@
     </include>
 
     <!-- Transforms -->
-    <node pkg="tf" type="static_transform_publisher" name="base_to_laser_tf" args="0 0 0 0 0 0 1 base_footprint laser_frame 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser_tf" args="0 0 0 0 0 0 1 base_footprint car/laser_link 100"/>
 
 </launch>
