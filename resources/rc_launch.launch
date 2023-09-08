@@ -14,8 +14,8 @@
 
     <!-- Transforms -->
     <node pkg="tf" type="static_transform_publisher" name="map_to_odom_tf" 
-      args="0.0 0.0 0.0 0 0 0.0 /map /odom 40" />
+        args="0.0 0.0 0.0 0 0 0.0 /map /odom 40" />
     <node pkg="tf" type="static_transform_publisher" name="base_to_laser_tf"
-        args="0.0 0.0 0.0 0 0 0 0.0 /base_link /car/laser_link 100"/>
+        args="0.0 0.0 0.0 0 0 0.0 /base_link /car/laser_link 100"/>
 
 </launch>
