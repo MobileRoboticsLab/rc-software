@@ -7,8 +7,8 @@
 
     <!-- SLAM -->
     <include file="$(find hector_mapping)/launch/mapping_default.launch">
-        <arg name="base_frame" value="base_link"/>
-        <arg name="odom_frame" value="odom"/>
+        <arg name="base_frame" value="/base_link"/>
+        <arg name="odom_frame" value="/odom"/>
         <!--arg name="map_size" value="2048"-->
     </include>
 
