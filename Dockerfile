@@ -25,3 +25,4 @@ RUN cd /catkin_ws/ \
 
 # Install launch file
 COPY ./resources/rc_launch.launch /catkin_ws/src/rc_launch.launch
+COPY ./resources/rc_config.yaml /catkin_ws/src/rc_config.yaml

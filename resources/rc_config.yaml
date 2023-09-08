@@ -1,0 +1,32 @@
+vesc_driver:
+  port: /dev/vesc
+  duty_cycle_min: 0.0
+  duty_cycle_max: 0.0
+  current_min: 0.0
+  current_max: 20.0
+  brake_min: -20000.0
+  brake_max: 200000.0
+  speed_min: -3250
+  speed_max: 3250
+  position_min: 0.0
+  position_max: 0.0
+  servo_min: 0.15
+  servo_max: 0.85
+  invert_servo: true
+
+yd_lidar_node:
+  port: "/dev/ydlidar"
+  baudrate: 115200
+  frame_id: "/laser_link"
+  angle_fixed: true
+  low_exposure: false
+  heartbeat: false
+  resolution_fixed: true
+  angle_min: -180.0
+  angle_max: 180.0
+  range_min: 0.08
+  range_max: 16.0
+  ignore_array: ""
+  samp_rate: 9
+  frequency: 7.0
+
