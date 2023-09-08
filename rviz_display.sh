@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Host Setup:
-# $ nano /etc/ssh/ssh_config
-# 'ForwardX11 yes'
-# $ xhost +
+xhost +
 
 # Start the Docker container
 docker run -it \
