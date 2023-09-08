@@ -1,5 +1,5 @@
 vesc_driver:
-  port: /dev/vesc
+  port: "/dev/vesc"
   duty_cycle_min: 0.0
   duty_cycle_max: 0.0
   current_min: 0.0
@@ -14,7 +14,7 @@ vesc_driver:
   servo_max: 0.85
   invert_servo: true
 
-yd_lidar_node:
+ydlidar_node:
   port: "/dev/ydlidar"
   baudrate: 115200
   frame_id: "/laser_link"
