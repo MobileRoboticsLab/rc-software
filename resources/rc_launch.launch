@@ -1,4 +1,13 @@
 <launch>
+
+    <!-- Transforms -->
+    <node pkg="tf" type="static_transform_publisher" name="map_to_odom_tf" 
+        args="0.0 0.0 0.0 0 0 0.0 /map /odom 40" />
+    <node pkg="tf" type="static_transform_publisher" name="odom_to_base_tf" 
+        args="0.0 0.0 0.0 0 0 0.0 /odom /base_link 40" />
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser_tf"
+        args="0.0 0.0 0.0 0 0 0.0 /base_link car/laser_link 40"/>
+
     <!-- VESC -->
     <include file="$(find vesc_main)/launch/vesc.launch" />
 
@@ -11,13 +20,5 @@
         <arg name="odom_frame" value="/odom"/>
         <!--arg name="map_size" value="2048"-->
     </include>
-
-    <!-- Transforms -->
-    <node pkg="tf" type="static_transform_publisher" name="map_to_odom_tf" 
-        args="0.0 0.0 0.0 0 0 0.0 /map /odom 40" />
-    <node pkg="tf" type="static_transform_publisher" name="odom_to_base_tf" 
-        args="0.0 0.0 0.0 0 0 0.0 /odom /base_link 40" />
-    <node pkg="tf" type="static_transform_publisher" name="base_to_laser_tf"
-        args="0.0 0.0 0.0 0 0 0.0 /base_link /car/laser_link 40"/>
 
 </launch>
