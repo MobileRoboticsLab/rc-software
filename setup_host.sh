@@ -18,7 +18,7 @@ echo \
 apt-get update
 
 # Install latest version
-apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Build project docker image
 docker build -t mobiroborc "${SCRIPT_DIR}"
@@ -34,7 +34,7 @@ udevadm control --reload-rules
 udevadm trigger
 
 # Set up Hotspot
-apt-get install network-manager
+apt-get install -y network-manager
 nmcli con add type wifi ifname wlan0 con-name Hostspot autoconnect yes ssid MobileRoboticsLabRC$1
 nmcli con modify Hostspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared
 nmcli con modify Hostspot wifi-sec.key-mgmt wpa-psk
