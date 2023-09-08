@@ -12,5 +12,9 @@ docker run -it \
     --net host \
     --privileged \
     -v /dev:/dev \
+    -e DISPLAY=$DISPLAY \
+    -e QT_X11_NO_MITSHM=1 \
+    -e ROS_MASTER_URI=http://localhost:11311 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
     mobiroborc \
     bash
