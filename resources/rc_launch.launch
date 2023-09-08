@@ -9,7 +9,9 @@
         args="0.0 0.0 0.0 0 0 0.0 /base_link car/laser_link 40"/>
 
     <!-- VESC -->
-    <include file="$(find vesc_main)/launch/vesc.launch" />
+    <include file="$(find vesc_main)/launch/vesc.launch">
+        <arg name="racecar_version" value="racecar-uw-nano"/>
+    </include>
 
     <!-- Lidar -->
     <include file="$(find ydlidar)/launch/lidar.launch" />
