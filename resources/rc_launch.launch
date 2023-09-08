@@ -6,9 +6,11 @@
     <include file="$(find ydlidar)/launch/lidar.launch" />
 
     <!-- SLAM -->
-    <!-- Hector -->
+    <include file="$(find hector_mapping)/launch/mapping_default.launch">
+        <!--arg name="map_size" value="2048"-->
+    </include>
 
     <!-- Transforms -->
-    <!-- /base_link -> /laser -->
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser_tf" args="0 0 0 0 0 0 1 base_footprint laser_frame 100"/>
 
 </launch>
