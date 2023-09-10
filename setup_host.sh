@@ -45,13 +45,14 @@ nmcli con add type wifi ifname wlan0 con-name Hostspot autoconnect yes ssid Mobi
 nmcli con modify Hostspot 802-11-wireless.mode ap 802-11-wireless.band a ipv4.method shared
 nmcli con modify Hostspot wifi-sec.key-mgmt wpa-psk
 nmcli con modify Hostspot wifi-sec.psk "mobileroboticslab"
+nmcli con up Hostspot
 
-# Add startup script
-cp ${SCRIPT_DIR}/resources/rc_project.service /etc/systemd/system/rc_project.service
-cp ${SCRIPT_DIR}/run_project.sh /usr/local/bin/run_rc_project.sh
-chmod +x /usr/local/bin/run_rc_project.sh
-
-# Enable startup service
-systemctl enable rc_project.service
-
-echo "Reboot to start."
+# Start the Docker container
+docker run \
+    --rm \
+    --net host \
+    --privileged \
+    --restart always \
+    -v /dev:/dev \
+    mobiroborc \
+    /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch /catkin_ws/src/rc_launch.launch"
