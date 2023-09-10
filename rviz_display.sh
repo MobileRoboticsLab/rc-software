@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Host Setup:
-# $ xhost +
+xhost +
 
 # Start the Docker container
 docker run -it \
