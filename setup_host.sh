@@ -48,8 +48,8 @@ nmcli con modify Hostspot wifi-sec.psk "mobileroboticslab"
 nmcli con up Hostspot
 
 # Start the Docker container
-docker run \
-    --rm \
+docker run -d \
+    --name mobile_robotics_rc \
     --net host \
     --privileged \
     --restart always \
