@@ -35,6 +35,12 @@ udevadm trigger
 
 # Set up Hotspot
 apt-get install -y network-manager
+systemctl enable NetworkManager
+systemctl start NetworkManager
+systemctl stop systemd-networkd
+systemctl disable systemd-networkd
+mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.backup
+
 nmcli con add type wifi ifname wlan0 con-name Hostspot autoconnect yes ssid MobileRoboticsLabRC$1
 nmcli con modify Hostspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared
 nmcli con modify Hostspot wifi-sec.key-mgmt wpa-psk
