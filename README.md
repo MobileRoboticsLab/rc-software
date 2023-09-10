@@ -2,7 +2,12 @@
 
 ## Installation
 
-### 1. Flash SD with Ubuntu 22.04 Desktop 64-bit
+### 1. Flash SD with Ubuntu 22.04 Server 64-bit
+
+```
+login: ubuntu
+password: ubuntu
+```
 
 ### 2. Install Software
 
