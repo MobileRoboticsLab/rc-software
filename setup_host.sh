@@ -3,6 +3,10 @@
 # Get the absolute path to the directory containing this script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+####################
+## Docker Install ##
+####################
+
 # Add Docker's official GPG key:
 apt-get update
 apt-get install -y ca-certificates curl gnupg
@@ -23,31 +27,49 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 # Build project docker image
 docker build -t mobiroborc "${SCRIPT_DIR}"
 
-## Setup Project
+###################
+## Devices Setup ##
+###################
 
-# Copy udev rules
+# Create udev rules for vesc and lidar
 cp ${SCRIPT_DIR}/resources/99-ydlidar.rules /etc/udev/rules.d/99-ydlidar.rules
 cp ${SCRIPT_DIR}/resources/99-vesc.rules /etc/udev/rules.d/99-vesc.rules
 
-# Restart udev
+# Apply udev changes
 udevadm control --reload-rules
 udevadm trigger
 
-# Set up Hotspot
+###################
+## Hotspot Setup ##
+###################
+
+# Install network-manager for mobile hotspot
 apt-get install -y network-manager
 systemctl enable NetworkManager
 systemctl start NetworkManager
+
+# Disable existing network manager
 systemctl stop systemd-networkd
 systemctl disable systemd-networkd
 mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.backup
 
+# Create the Hotspot
+# SSID: MobileRoboticsLabRC# (# passed in from terminal)
+# PASS: mobileroboticslab
 nmcli con add type wifi ifname wlan0 con-name Hostspot autoconnect yes ssid MobileRoboticsLabRC$1
 nmcli con modify Hostspot 802-11-wireless.mode ap 802-11-wireless.band a ipv4.method shared
 nmcli con modify Hostspot wifi-sec.key-mgmt wpa-psk
 nmcli con modify Hostspot wifi-sec.psk "mobileroboticslab"
 nmcli con up Hostspot
 
+#################
+## Run Project ##
+#################
+
 # Start the Docker container
+# --net host => Run on hotspot network (10.42.0.1)
+# --restart always => Restart container on reset or failure
+# -v /dev:/dev => Map device ports to container (specifically /dev/vesc and /dev/ydlidar)
 docker run -d \
     --name mobile_robotics_rc \
     --net host \
