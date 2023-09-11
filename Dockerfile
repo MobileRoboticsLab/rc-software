@@ -1,7 +1,6 @@
 FROM ros:noetic-robot
 
 RUN apt update
-RUN apt install net-tools -y
 
 RUN apt install -y \
     ros-noetic-tf \
@@ -15,14 +14,13 @@ RUN apt install -y \
 WORKDIR /catkin_ws/
 
 # Install packages
-COPY ./vesc /catkin_ws/src/vesc
-COPY ./ydlidar /catkin_ws/src/ydlidar
+COPY vesc src/vesc
+COPY ydlidar src/ydlidar
 
 # Build ROS workspace
-RUN cd /catkin_ws/ \
-    && . /opt/ros/noetic/setup.sh \
+RUN . /opt/ros/noetic/setup.sh \
     && catkin_make
 
 # Install launch file
-COPY ./resources/rc_launch.launch /catkin_ws/src/rc_launch.launch
-COPY ./resources/rc_config.yaml /catkin_ws/src/rc_config.yaml
+COPY resources/rc_launch.launch src/rc_launch.launch
+COPY resources/rc_config.yaml src/rc_config.yaml

@@ -7,16 +7,15 @@
 ```
 login: ubuntu
 password: ubuntu
+new password: password
 ```
 
 ### 2. Install Software
 
 ```
 sudo apt update
-sudo apt install -y git
 git clone https://github.com/MobileRoboticsLab/rc-software
-cd rc-software 
-sudo ./setup_host.sh <RC#>
+sudo ./rc-software/setup_host.sh <RC#>
 ```
 
 ### 3. Reboot
