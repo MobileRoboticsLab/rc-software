@@ -15,6 +15,7 @@ docker run \
     --net host \
     --privileged \
     -v /dev:/dev \
+    -e ROS_IP="10.42.0.1" \
     mobiroborc \
     /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch /catkin_ws/src/rc_launch.launch" \
     >> ${LOG_FOLDER}
