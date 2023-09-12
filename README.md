@@ -13,7 +13,6 @@ new password: password
 ### 2. Install Software
 
 ```
-sudo apt update
 git clone https://github.com/MobileRoboticsLab/rc-software
 sudo ./rc-software/setup_host.sh <RC#>
 ```

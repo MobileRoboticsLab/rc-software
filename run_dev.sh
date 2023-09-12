@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Enable display forwarding
 xhost +
 
 # Get the absolute path to the directory containing this script

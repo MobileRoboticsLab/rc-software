@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Enable display forwarding
 xhost +
 
 # Start the Docker container
