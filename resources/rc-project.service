@@ -1,0 +1,20 @@
+[Unit]
+Description=Mobile Robotics Docker container
+Requires=NetworkManager.service
+After=NetworkManager.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStartPre=/bin/bash -c 'until nmcli con show --active | grep Hostspot; do sleep 1; done'
+ExecStart=/usr/bin/docker run --rm -d \
+    --name mobile_robotics_rc \
+    --net host \
+    --privileged \
+    -v /dev:/dev \
+    mobiroborc \
+    /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch /catkin_ws/src/rc_launch.launch"
+ExecStop=/usr/bin/docker stop -t 2 mobile_robotics_rc
+
+[Install]
+WantedBy=multi-user.target

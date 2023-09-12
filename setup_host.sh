@@ -62,19 +62,17 @@ nmcli con modify Hostspot wifi-sec.key-mgmt wpa-psk
 nmcli con modify Hostspot wifi-sec.psk "mobileroboticslab"
 nmcli con up Hostspot
 
-#################
-## Run Project ##
-#################
+####################
+## Startup Script ##
+####################
 
-# Start the Docker container
-# --net host => Run on hotspot network (10.42.0.1)
-# --restart always => Restart container on reset or failure
-# -v /dev:/dev => Map device ports to container (specifically /dev/vesc and /dev/ydlidar)
-docker run -d \
-    --name mobile_robotics_rc \
-    --net host \
-    --privileged \
-    --restart always \
-    -v /dev:/dev \
-    mobiroborc \
-    /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch /catkin_ws/src/rc_launch.launch"
+cp ${SCRIPT_DIR}/resources/rc-project.service /etc/systemd/system/rc-project.service
+
+systemctl daemon-reload
+systemctl enable rc-project.service
+
+###############
+## End Setup ##
+###############
+
+echo "Reboot to start."
