@@ -68,7 +68,6 @@ nmcli con up Hostspot
 
 # Run the docker container
 docker run -d \
-    --rm \
     --name mobile_robotics_rc \
     --net host \
     --privileged \
