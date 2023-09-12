@@ -60,7 +60,6 @@ nmcli con add type wifi ifname wlan0 con-name Hostspot autoconnect yes ssid Mobi
 nmcli con modify Hostspot 802-11-wireless.mode ap 802-11-wireless.band a ipv4.method shared
 nmcli con modify Hostspot wifi-sec.key-mgmt wpa-psk
 nmcli con modify Hostspot wifi-sec.psk "mobileroboticslab"
-nmcli con up Hostspot
 
 ####################
 ## Startup Script ##
