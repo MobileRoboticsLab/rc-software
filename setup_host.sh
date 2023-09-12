@@ -66,13 +66,14 @@ nmcli con up Hostspot
 ## Startup Script ##
 ####################
 
+# Add startup script
 cp ${SCRIPT_DIR}/resources/rc-project.service /etc/systemd/system/rc-project.service
+cp ${SCRIPT_DIR}/run_project.sh /usr/local/bin/run_project.sh
+chmod +x /usr/local/bin/run_project.sh
 
-systemctl daemon-reload
+# Enable startup service
 systemctl enable rc-project.service
 
-###############
-## End Setup ##
-###############
-
 echo "Reboot to start."
+
+# End of setup
