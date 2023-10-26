@@ -18,3 +18,19 @@ sudo ./rc-software/setup_host.sh <RC#>
 ```
 
 ### 3. Reboot
+
+## Making Updates
+
+### 1. Update the files in the Github
+
+### 2. Update the RC
+
+* Plug in RC Pi to monitor, keyboard, and ethernet
+* Log into the RC Pi
+* Run the following commands
+```
+cd ~/rc-software
+git pull origin main
+sudo ./run_dev.sh
+```
+The Pi should now be updated. You can reboot to start.
