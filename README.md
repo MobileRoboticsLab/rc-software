@@ -31,6 +31,6 @@ sudo ./rc-software/setup_host.sh <RC#>
 ```
 cd ~/rc-software
 git pull origin main
-sudo ./run_dev.sh
+sudo ./update_host.sh
 ```
 The Pi should now be updated. You can reboot to start.
